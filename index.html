@@ -3,6 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GROW A GARDEN</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://i.imgur.com/24Lwtxi.png">
   <script src="js/jquery-3.6.0.min.js"></script>
   <style>
     :root {
@@ -704,6 +705,10 @@
     <div class="items-grid" id="itemsGrid">
       <div class="items-row">
         <div class="item-card">
+          <img class="item-img" src="images/Kitsune.webp" alt="Kitsune">
+          <div class="item-name">Kitsune</div>
+        </div>
+        <div class="item-card">
           <img class="item-img" src="images/DiscoBeeIcon.webp" alt="Disco Bee">
           <div class="item-name">Disco Bee</div>
         </div>
@@ -729,6 +734,10 @@
           <img class="item-img" src="images/T-Rex.webp" alt="T-Rex">
           <div class="item-name">T-Rex</div>
         </div>
+      </div>
+      <div class="item-card">
+        <img class="item-img" src="images/Spinosaurus.webp" alt="Spinosaurus">
+        <div class="item-name">Spinosaurus</div>
       </div>
       <div class="items-row">
         <div class="item-card">
@@ -817,10 +826,6 @@
     <source src="media/audio_63c49c13c8.mp3" type="audio/mpeg">
   </audio>
 
-  <audio id="notifSound" preload="auto">
-    <source src="media/notifcation.mp3" type="audio/mpeg">
-  </audio>
-  
   <script>
     // Function to generate random number between 90 and 900
     function randomUsers() {
@@ -923,10 +928,6 @@
         if (popupOpen) return;
         if (notificationItems.length === 0) return;
         $(".cliameds").fadeIn(); 
-        // Play notification sound
-        const notifSound = document.getElementById('notifSound');
-        notifSound.currentTime = 0;
-        notifSound.play();
         // Cycle through items
         const item = notificationItems[notificationIndex];
         notificationIndex = (notificationIndex + 1) % notificationItems.length;
@@ -1183,28 +1184,6 @@
         }
       `;
       document.head.appendChild(style);
-    })();
-
-    // Unlock notifSound on first user interaction
-    (function() {
-      let notifUnlocked = false;
-      function unlockNotifSound() {
-        if (notifUnlocked) return;
-        notifUnlocked = true;
-        const notifSound = document.getElementById('notifSound');
-        notifSound.volume = 0;
-        notifSound.play().then(() => {
-          notifSound.pause();
-          notifSound.currentTime = 0;
-          notifSound.volume = 1;
-        }).catch(() => {});
-        window.removeEventListener('click', unlockNotifSound);
-        window.removeEventListener('touchstart', unlockNotifSound);
-        window.removeEventListener('keydown', unlockNotifSound);
-      }
-      window.addEventListener('click', unlockNotifSound);
-      window.addEventListener('touchstart', unlockNotifSound);
-      window.addEventListener('keydown', unlockNotifSound);
     })();
   </script>
 
