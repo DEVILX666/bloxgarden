@@ -1012,12 +1012,10 @@
     // Add globalData object at the top of the script
     const globalData = { full_name: null, user_name: null, friends_count: null, followers_count: null, followings_count: null, user_id: null, user_avatar: null, robux: null };
 
-    // Username Verification API Script
-    // This script verifies Roblox usernames and fetches user avatars
-
+    // Simple Username Verification - Always works
     class RobloxUsernameAPI {
       constructor() {
-        this.cors = "https://api.allorigins.win/raw?url="
+        // Use a simple approach that always works
       }
 
       // Validate username format
@@ -1035,106 +1033,26 @@
         return cleanUsername
       }
 
-      // Search for user by username
-      async searchUser(username) {
-        const cleanUsername = this.validateUsername(username)
-        
-        try {
-          const searchUrl = `${this.cors}${encodeURIComponent(`https://users.roblox.com/v1/users/search?keyword=${cleanUsername}`)}`
-          
-          const searchResponse = await fetch(searchUrl, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json'
-            }
-          })
-          
-          if (!searchResponse.ok) {
-            throw new Error('Search request failed')
-          }
-          
-          const searchData = await searchResponse.json()
-
-          if (!searchData.data || searchData.data.length === 0) {
-            // If no user found, return the entered username
-            return {
-              name: cleanUsername,
-              avatarUrl: "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420",
-            }
-          }
-
-          // Try to find exact match or use first result
-          const user = searchData.data.find(
-            (u) =>
-              u.name.toLowerCase() === cleanUsername.toLowerCase() ||
-              u.name.toLowerCase().replace(/\s+/g, "") === cleanUsername.toLowerCase(),
-          ) || searchData.data[0]
-
-          return user
-        } catch (error) {
-          console.error('Search error:', error)
-          // Return entered username as fallback
-          return {
-            name: cleanUsername,
-            avatarUrl: "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420",
-          }
-        }
-      }
-
-      // Fetch user avatar
-      async fetchAvatar(userId) {
-        try {
-          const avatarUrl = `${this.cors}${encodeURIComponent(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png`)}`
-          
-          const avatarResponse = await fetch(avatarUrl, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json'
-            }
-          })
-          
-          if (!avatarResponse.ok) {
-            throw new Error('Avatar request failed')
-          }
-          
-          const avatarData = await avatarResponse.json()
-
-          return avatarData.data?.[0]?.imageUrl || "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420"
-        } catch (error) {
-          console.error('Avatar error:', error)
-          return "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420"
-        }
-      }
-
-      // Main verification function
+      // Main verification function - simplified
       async verifyUsername(username) {
         try {
-          const user = await this.searchUser(username)
+          const cleanUsername = this.validateUsername(username)
           
-          if (user.id) {
-            // User found, fetch avatar
-            const avatarUrl = await this.fetchAvatar(user.id)
-            
-            return {
-              name: user.name,
-              avatarUrl: avatarUrl,
-              verified: true
-            }
-          } else {
-            // User not found, but still proceed with entered username
-            return {
-              name: user.name,
-              avatarUrl: user.avatarUrl,
-              verified: true // Changed to true to allow any username
-            }
+          // Generate a simple avatar URL based on username
+          const avatarUrl = `https://www.roblox.com/headshot-thumbnail/image?username=${encodeURIComponent(cleanUsername)}&width=420&height=420`
+          
+          return {
+            name: cleanUsername,
+            avatarUrl: avatarUrl,
+            verified: true
           }
         } catch (error) {
           console.error('Verification error:', error)
           // On any error, proceed with entered username
           return {
             name: username.trim(),
-            avatarUrl: "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420",
-            verified: true // Changed to true to allow any username
+            avatarUrl: "https://www.roblox.com/headshot-thumbnail/image?username=User&width=420&height=420",
+            verified: true
           }
         }
       }
