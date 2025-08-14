@@ -204,6 +204,91 @@
       box-sizing: border-box;
       padding: 18px 0 0 0;
       margin-bottom: 8px;
+      position: relative;
+    }
+    
+    /* Modern Corner Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .theme-toggle::before {
+      content: '☀️';
+      font-size: 32px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scale(1) rotate(0deg);
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.15);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .theme-toggle:active {
+      transform: scale(0.9);
+    }
+    
+    .theme-toggle.night-mode {
+      background: rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .theme-toggle.night-mode::before {
+      content: '🌙';
+      transform: scale(1) rotate(360deg);
+    }
+    
+    .theme-toggle.night-mode:hover {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Night Mode Styles */
+    body.night-mode {
+      background: url('images/night bg.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+    
+    body.night-mode .item-card {
+      background: rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    body.night-mode .active-users-box {
+      background: rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    body.night-mode .floating-pet {
+      background: rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Night Mode Popup Text - White for Readability */
+    body.night-mode .message .more div:first-child {
+      color: var(--accent3);
+    }
+    
+    body.night-mode .message .more div:last-child {
+      color: #ffffff;
     }
     .active-users-box {
       background: rgba(255, 255, 255, 0.1);
@@ -884,6 +969,7 @@
         <span>Active users :</span>
         <span class="active-users-count" id="activeUsersCount"></span>
       </div>
+      <button class="theme-toggle" id="themeToggle">☀️</button>
     </div>
 
     <div class="select-title">
@@ -1513,6 +1599,29 @@
       window.addEventListener('beforeunload', () => {
         if (animationId) {
           cancelAnimationFrame(animationId);
+        }
+      });
+    })();
+
+    // Theme Toggle
+    (function() {
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      const currentTheme = localStorage.getItem('theme');
+
+      if (currentTheme) {
+        body.classList.add('night-mode');
+        themeToggle.classList.add('night-mode');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('night-mode');
+        themeToggle.classList.toggle('night-mode');
+        
+        if (body.classList.contains('night-mode')) {
+          localStorage.setItem('theme', 'night');
+        } else {
+          localStorage.removeItem('theme');
         }
       });
     })();
